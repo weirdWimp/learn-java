@@ -1,4 +1,4 @@
-package org.learn.something.java8;
+package org.learn.something.java8.forkjoin.streamlongsum;
 
 import java.util.concurrent.RecursiveTask;
 

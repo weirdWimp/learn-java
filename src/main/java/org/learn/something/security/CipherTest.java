@@ -1,5 +1,13 @@
 package org.learn.something.security;
 
+import lombok.SneakyThrows;
+import org.apache.tomcat.util.buf.HexUtils;
+import org.bouncycastle.asn1.DERNull;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.jcajce.spec.PBKDF2KeySpec;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
@@ -10,28 +18,44 @@ import java.security.*;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 
 public class CipherTest {
 
     public static final char[] hexChars = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     public static void main(String[] args) throws Exception {
-//        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-//        keyGenerator.init(128);
-//        SecretKey key = keyGenerator.generateKey();
-//
-//        Cipher cipher = Cipher.getInstance("AES_128/CFB/NoPadding");
-//        cipher.init(Cipher.ENCRYPT_MODE, key);
-//
-//        byte[] cipherBytes = cipher.doFinal("helloworld".getBytes(StandardCharsets.UTF_8));
-//        System.out.println(cipher.getIV().length);
+        //        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+        //        keyGenerator.init(128);
+        //        SecretKey key = keyGenerator.generateKey();
+        //
+        //        Cipher cipher = Cipher.getInstance("AES_128/CFB/NoPadding");
+        //        cipher.init(Cipher.ENCRYPT_MODE, key);
+        //
+        //        byte[] cipherBytes = cipher.doFinal("helloworld".getBytes(StandardCharsets.UTF_8));
+        //        System.out.println(cipher.getIV().length);
 
-//        withParameters();
+        //        withParameters();
 
-//        keyPairGen();
-//        withParameters();
-        keyStoreTest();
+        //        keyPairGen();
+        //        withParameters();
+        //         keyStoreTest();
 
+        pbkdf2Test();
+
+    }
+
+    @SneakyThrows
+    public static void pbkdf2Test() {
+        // SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+        //
+        // char[] password = "12345678".toCharArray();
+        // byte[] salt = HexUtils.fromHexString("3631C9DA382CE487");
+        //
+        // KeySpec pbeKeySpec = new PBEKeySpec(password, salt, 1000, 128);
+        // SecretKey secretKey = secretKeyFactory.generateSecret(pbeKeySpec);
+        //
+        // System.out.printf("algorithm： %s, key(hex format): %s", secretKey.getAlgorithm(), HexUtils.toHexString(secretKey.getEncoded()));
     }
 
     public static void withParameters() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
