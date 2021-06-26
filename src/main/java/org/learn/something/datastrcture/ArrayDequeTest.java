@@ -27,7 +27,7 @@ public class ArrayDequeTest {
         // and this will happen when this push operation fill array
         for (int i = 0; i < 17; i++) {
             System.out.println("push:" + (i + 1));
-            stack.push(i + 1); // add first
+            stack.push(i + 1); // addFirst 由于底层会自动扩容，所以其实 addFirst/add/addLast 方法不会抛出异常
         }
 
         // pop use removeFirst, when the stack is empty, exception will be trowed
