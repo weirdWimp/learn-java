@@ -5,6 +5,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.ToDoubleFunction;
 
 /**
  * 哈夫曼树，即带权路径最短的二叉树
@@ -31,9 +32,6 @@ public class HuffmanTree<T> {
 
 
     public static <T> Node<T> createTree(List<Node<T>> nodes) {
-
-        // Comparator<Node<T>> s = Comparator.comparingDouble(Node::getWeight).reversed();
-
         while (nodes.size() > 1) {
             nodes.sort((n1, n2) -> Double.compare(n2.getWeight(), n1.getWeight()));
             Node<T> left = nodes.get(nodes.size() - 1);
