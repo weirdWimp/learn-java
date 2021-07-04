@@ -1,4 +1,4 @@
-package org.learn.something.algorithm.sort;
+package org.learn.something.algorithm.sort.select;
 
 import java.util.Arrays;
 
